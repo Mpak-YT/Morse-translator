@@ -31,7 +31,7 @@
 #define MAX_MORSE_SYMBOLS 8
 #define MORSE_SYMBOLS ".- \t"
 #define SYMBOLS "0123456789.,:;|\'\"-/?!@\t+"
-#define RU  "????????????????????????????????" SYMBOLS
+#define RU  "АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ" SYMBOLS
 #define ENG "ABCDEFGHIJKLMNOPQRSTUVWXYZ" SYMBOLS
 //*******************PSEUDOGRAPHICS***********************
 #define VERT_1 179
@@ -113,16 +113,10 @@ void decoder(struct morse morse, char* str);
 int ep(int num, int degree);
 void print_morse(unsigned char byte, short int dit_duration, short int hz);
 
-
-
-
-
-
-
 void main(){
-    setlocale(LC_ALL, "ru_RU.CP866"); // Set locale to Russian CP866
-    SetConsoleCP(866); // Set console input code page to 866
-    SetConsoleOutputCP(866); // Set console output code page to 866
+    setlocale(LC_ALL, "ru_RU.CP866");
+    SetConsoleCP(866);
+    SetConsoleOutputCP(866);
     struct morse morse;
     struct settings settings;
     settings.dit_duration=300;
@@ -134,13 +128,7 @@ void main(){
     free(morse.codes);
 }
 
-
-
-
-
-//********************************************************
 //**********************INTERACTION***********************
-//********************************************************
 int interaction_value(short int *value, int min, int max, int shift) {
     int key = getch();
     if (key == KEY_ENTER)
@@ -177,13 +165,7 @@ int interaction_menu(int *option, int max) {
     return 1;
 }
 
-
-
-
-
-//********************************************************
 //************************IN_MENU*************************
-//********************************************************
 void print_all_morse(struct morse morse, struct settings settings){
     system("cls");
     printf("\n");
@@ -197,18 +179,14 @@ void print_all_morse(struct morse morse, struct settings settings){
     getch();
 }
 
-
-
-
 void caps_lock(bool new_state) {
     if ((GetKeyState(VK_CAPITAL) & 0x0001) != new_state) {
         keybd_event(VK_CAPITAL, 0, KEYEVENTF_EXTENDEDKEY, 0);
         keybd_event(VK_CAPITAL, 0, KEYEVENTF_KEYUP, 0);
     }
 }
-//********************************************************
+
 //************************FOR_TRANSLATOR******************
-//********************************************************
 char* input_str(char *symbols) {
     system("cls");
     char* str = (char*)calloc(1, sizeof(char));
@@ -350,12 +328,7 @@ void print_morse(unsigned char byte, short int dit_duration, short int hz){
     printf(" ");
 }
 
-
-
-
-//********************************************************
 //**********************SETTINGS**************************
-//********************************************************
 void language_selection(struct morse *morse, bool *language){
     morse->symbols = NULL;
     morse->codes = NULL;
@@ -365,38 +338,38 @@ void language_selection(struct morse *morse, bool *language){
         morse->symbols = RU;
         morse->codes = (struct code *)realloc(morse->codes, (NUMBER_OF_RU+NUMBER_OF_SYMBOLS)*sizeof(struct code));
         {    //*first 1 is not readed, start reading after first 1
-        (morse->codes)[0].morse_code = 0b00000101, /*  ?  */
-        (morse->codes)[1].morse_code = 0b00011000, /*  ?  */
-        (morse->codes)[2].morse_code = 0b00001011, /*  ?  */
-        (morse->codes)[3].morse_code = 0b00001110, /*  ?  */
-        (morse->codes)[4].morse_code = 0b00001100, /*  ?  */
-        (morse->codes)[5].morse_code = 0b00000010, /*  ?  */
-        (morse->codes)[6].morse_code = 0b00010001, /*  ?  */
-        (morse->codes)[7].morse_code = 0b00011100, /*  ?  */
-        (morse->codes)[8].morse_code = 0b00000100, /*  ?  */
-        (morse->codes)[9].morse_code = 0b00010111, /*  ?  */
-        (morse->codes)[10].morse_code = 0b00001101, /*  ?  */
-        (morse->codes)[11].morse_code = 0b00010100, /*  ?  */
-        (morse->codes)[12].morse_code = 0b00000111, /*  ?  */
-        (morse->codes)[13].morse_code = 0b00000110, /*  ?  */
-        (morse->codes)[14].morse_code = 0b00001111, /*  ?  */
-        (morse->codes)[15].morse_code = 0b00010110, /*  ?  */
-        (morse->codes)[16].morse_code = 0b00001010, /*  ?  */
-        (morse->codes)[17].morse_code = 0b00001000, /*  ?  */
-        (morse->codes)[18].morse_code = 0b00000011, /*  ?  */
-        (morse->codes)[19].morse_code = 0b00001001, /*  ?  */
-        (morse->codes)[20].morse_code = 0b00010010, /*  ?  */
-        (morse->codes)[21].morse_code = 0b00010000, /*  ?  */
-        (morse->codes)[22].morse_code = 0b00011010, /*  ?  */
-        (morse->codes)[23].morse_code = 0b00011110, /*  ?  */
-        (morse->codes)[24].morse_code = 0b00011111, /*  ?  */
-        (morse->codes)[25].morse_code = 0b00011101, /*  ?  */
-        (morse->codes)[26].morse_code = 0b01011010, /*  ?  */
-        (morse->codes)[27].morse_code = 0b00011011, /*  ?  */
-        (morse->codes)[28].morse_code = 0b00011001, /*  ?  */
-        (morse->codes)[29].morse_code = 0b00100100, /*  ?  */
-        (morse->codes)[30].morse_code = 0b00010011, /*  ?  */
-        (morse->codes)[31].morse_code = 0b00010101, /*  ?  */
+        (morse->codes)[0].morse_code = 0b00000101, /*  А  */
+        (morse->codes)[1].morse_code = 0b00011000, /*  Б  */
+        (morse->codes)[2].morse_code = 0b00001011, /*  В  */
+        (morse->codes)[3].morse_code = 0b00001110, /*  Г  */
+        (morse->codes)[4].morse_code = 0b00001100, /*  Д  */
+        (morse->codes)[5].morse_code = 0b00000010, /*  Е  */
+        (morse->codes)[6].morse_code = 0b00010001, /*  Ж  */
+        (morse->codes)[7].morse_code = 0b00011100, /*  З  */
+        (morse->codes)[8].morse_code = 0b00000100, /*  И  */
+        (morse->codes)[9].morse_code = 0b00010111, /*  Й  */
+        (morse->codes)[10].morse_code = 0b00001101, /*  К  */
+        (morse->codes)[11].morse_code = 0b00010100, /*  Л  */
+        (morse->codes)[12].morse_code = 0b00000111, /*  М  */
+        (morse->codes)[13].morse_code = 0b00000110, /*  Н  */
+        (morse->codes)[14].morse_code = 0b00001111, /*  О  */
+        (morse->codes)[15].morse_code = 0b00010110, /*  П  */
+        (morse->codes)[16].morse_code = 0b00001010, /*  Р  */
+        (morse->codes)[17].morse_code = 0b00001000, /*  С  */
+        (morse->codes)[18].morse_code = 0b00000011, /*  Т  */
+        (morse->codes)[19].morse_code = 0b00001001, /*  У  */
+        (morse->codes)[20].morse_code = 0b00010010, /*  Ф  */
+        (morse->codes)[21].morse_code = 0b00010000, /*  Х  */
+        (morse->codes)[22].morse_code = 0b00011010, /*  Ц  */
+        (morse->codes)[23].morse_code = 0b00011110, /*  Ч  */
+        (morse->codes)[24].morse_code = 0b00011111, /*  Ш  */
+        (morse->codes)[25].morse_code = 0b00011101, /*  Щ  */
+        (morse->codes)[26].morse_code = 0b01011010, /*  Ъ  */
+        (morse->codes)[27].morse_code = 0b00011011, /*  Ы  */
+        (morse->codes)[28].morse_code = 0b00011001, /*  Ь  */
+        (morse->codes)[29].morse_code = 0b00100100, /*  Э  */
+        (morse->codes)[30].morse_code = 0b00010011, /*  Ю  */
+        (morse->codes)[31].morse_code = 0b00010101, /*  Я  */
         (morse->codes)[32].morse_code = 0b00111111, /*  '0'   */
         (morse->codes)[33].morse_code = 0b00101111, /*  '1'   */
         (morse->codes)[34].morse_code = 0b00100111, /*  '2'   */
@@ -522,11 +495,7 @@ void change_speed(int key, int early_key, float *speed){
         *speed=SPEED_MAX; 
 }
 
-
-
-//********************************************************
 //************************MENU****************************
-//********************************************************
 void settings_menu(struct morse *morse, struct settings *settings){
     while(1){
         switch (print_menu(settings->language, text_settings_menu, get_settings_hint, 3)){
@@ -582,12 +551,7 @@ void translator_menu(struct morse morse, struct settings settings){
     }
 }
 
-
-
-
-//************************************PSEUDOGRAPHICS************************************
 //**************************************PRINT_MENU**************************************
-//*****************************************TEXT*****************************************
 void line(int pos, int max){ 
     printf("%c", (pos==0)?UP_RIGHT_2:(pos==max)? DOWN_RIGHT_2:VERT_2_RIGHT_1);
     for(int i=0; i<LENGHT_LINE;i++){
@@ -599,7 +563,7 @@ void line(int pos, int max){
     }
     printf("%c%c", (pos==0)?UP_LEFT_2:(pos==max)? DOWN_LEFT_2:VERT_2_LEFT_1, (pos==0)?'\n':(pos==max)? '\0':'\n');
 }
-/**************************************************************************************/
+
 int print_menu(bool language, char* (*txt)(int, bool), char* (*hint)(int, bool), int max_number){
     int choise = 0;
     while (1){
@@ -617,36 +581,38 @@ int print_menu(bool language, char* (*txt)(int, bool), char* (*hint)(int, bool),
             return choise;
     }
 }
+
 /**************************************************************************************/
 char* text_menu(int number, bool language){
     switch(number){
         case 0: return(language) ? "TRANSLATOR      " : 
-                                   "??????????      ";
+                                   "ПЕРЕВОДЧИК      ";
         case 1: return(language) ? "ALL MORSE CODE  " :
-                                   "??? ?????? ?????";
+                                   "ВСЯ АЗБУКА МОРЗЕ";
         case 2: return(language) ? "SETTINGS        " : 
-                                   "?????????       ";
+                                   "НАСТРОЙКИ       ";
         case 3: return(language) ? "EXIT            " : 
-                                   "?????           ";
+                                   "ВЫХОД           ";
     }
 }
 
 char* text_settings_menu(int number, bool language){
     switch(number){
         case 0: return(language) ? "HZ              " : 
-                                   "??              ";
+                                   "ГЦ              ";
         case 1: return(language) ? "DURATION        " : 
-                                   "????????????    ";
+                                   "ДЛИТЕЛЬНОСТЬ    ";
         case 2: return(language) ? "LANGUAGE        " : 
-                                   "????            ";
+                                   "ЯЗЫК            ";
         case 3: return(language) ? "EXIT            " : 
-                                   "?????           ";
+                                   "ВЫХОД           ";
     }
 }
 
+
 char* text_language_menu(int number,  bool language){
     switch(number){
-        case 0: return "??????? ????    "; 
+        case 0: return "РУССКИЙ ЯЗЫК    "; 
         case 1: return "ENGLISH LANGUAGE";
     }
 }
@@ -654,20 +620,22 @@ char* text_language_menu(int number,  bool language){
 char* text_translator_menu(int number, bool language){
     switch(number){
         case 0: return(language) ? "INTO MORSE      " : 
-                                   "?? ?????        ";
+                                   "НА МОРЗЕ        ";
         case 1: return(language) ? "FROM MORSE      " :
-                                   "? ?????         ";
+                                   "С МОРЗЕ         ";
         case 2: return(language) ? "EXIT            " : 
-                                   "?????           ";
+                                   "ВЫХОД           ";
     }
 }
 
 char* get_settings_hint(int choise, bool language) {
     switch (choise) {
         case 0:
-            return language ? "\nThe Morse code translator will also produce sound for the auditory transmission of Morse code.\nYou can adjust the frequency of this sound in hertz." : "\n?????? ?? ??? ? ?? ??? ????????? ??? ??? ?????? ????? ???? ???.\n?? ????? ??????? ????? ??? ??? ? ?????.";
+            return language ? "\nThe Morse code translator will also produce sound for the auditory transmission of Morse code.\nYou can adjust the frequency of this sound in hertz." :
+            "\nПереводчик азбуки Морзе также будет воспроизводить звук для слуховой передачи азбуки Морзе.\nВы можете настроить частоту этого звука в герцах.";
         case 1:
-            return language ? "\nThe Morse code translator will also produce sound for the auditory transmission of Morse code.\nYou can adjust the duration of the shortest signal (dit) in milliseconds." : "\n?????? ?? ??? ??? ??? ????????? ??? ??? ?????? ????? ???? ???.\n?? ????? ??????? ???????? ???? ?????? ????? (??) ? ?????????.";
+            return language ? "\nThe Morse code translator will also produce sound for the auditory transmission of Morse code.\nYou can adjust the duration of the shortest signal (dit) in milliseconds." :
+            "\nПереводчик азбуки Морзе также будет воспроизводить звук для слуховой передачи азбуки Морзе.\nВы можете настроить длительность самого короткого сигнала (точки) в миллисекундах.";
         default:
             return NULL;
     }
@@ -675,9 +643,10 @@ char* get_settings_hint(int choise, bool language) {
 
 void hello(bool language){
     system("cls");
-    printf("%s", (language)?"\n\nHello! This programm can encrypt typed text in morse code and vice versa.\n\
-Before starting, it is recommended to go to settings.\nAll menu control using arrow keys and Enter button.\nPress any key to continue":
-"\n\n????! ?? ????? ????? ?????? ???????? ??? ?? ????? ??? ? ???????.\n\
-??? ????? ?????????? ?????? ???????.\n?? ??????? ???? ? ??????? ?????? ? ??????? ? ?????? Enter\n?????? ???? ???????, ??? ????????");
+    printf("%s", (language) ? "\n\nHello! This program can encrypt typed text in Morse code and vice versa.\n\
+Before starting, it is recommended to go to settings.\nAll menu control using arrow keys and Enter button.\nPress any key to continue" :
+"\n\nПривет! Эта программа может шифровать введённый текст в азбуку Морзе и наоборот.\n\
+Перед началом рекомендуется перейти в настройки.\nВсе управление меню осуществляется стрелками и кнопкой Enter.\nНажмите любую клавишу, чтобы продолжить");
     getch();
 }
+
